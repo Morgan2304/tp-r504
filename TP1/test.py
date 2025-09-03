@@ -14,7 +14,8 @@ def test_2():
 
 def test_3():
 	if a==0 and b<0 :
-		with pytest.raises ValueError ("Impossible de divisé faire la puissance par 0")
+		with pytest.raises (Exception):
 			assert f.puissance (0,1) == 0
 			assert f.puissance (0,10) == 0
+			assert f.puissance (0,-1) == 0
 			assert f.puissance (0,50) == 0
