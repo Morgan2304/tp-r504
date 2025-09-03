@@ -13,9 +13,8 @@ def test_2():
 	assert f.puissance (-2,-1) == -0.5
 
 def test_3():
-	if a==0 and b<0 :
-		with pytest.raises (Exception):
-			assert f.puissance (0,1) == 0
-			assert f.puissance (0,10) == 0
-			assert f.puissance (0,-1) == 0
-			assert f.puissance (0,50) == 0
+	with pytest.raises (ValueError):
+		assert f.puissance (0,-1) == 0
+	assert f.puissance (0,1) == 0
+	assert f.puissance (0,10) == 0
+	assert f.puissance (0,50) == 0
