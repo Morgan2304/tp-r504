@@ -1,0 +1,13 @@
+FROM debian:11
+RUN apt update
+RUN apt install -y build-essential 
+RUN apt install -y pkg-config 
+RUN apt install -y python-dev python3-pip
+RUN apt install -y default-libmysqlclient-dev
+RUN pip3 install --upgrade pip
+RUN pip3 flask-mysqldb
+RUN pip3 mysql-connector-python
+RUN mkdir /srv/templates 
+RUN dockerfile COPY index.html /srv/templates/
+RUN dockerfile COPY app_1.py /srv/
+CMD ["flask","--app","/srv/app_1","run","--host=0.0.0.0"]
