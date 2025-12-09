@@ -1,8 +1,6 @@
-#!/bin/bash
-
 docker network create tplb 
 
-docker build -t im-nginx-lb
+docker build -f tp-A/Dockerfile -t im-nginx-lb tp-A
 
 mkdir -p shared1 shared2
 
@@ -23,7 +21,7 @@ docker run -d --rm \
   -v "$(pwd)/shared2:/usr/share/nginx/html" \
   nginx
 
-docker run -d \
+docker run -d --rm\
   --name nginx-lb \
   --network tplb \
   -p 83:80 \
